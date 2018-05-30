@@ -1,7 +1,9 @@
-''' This program ensures Nuntius is able to greet its users with relevant and dynamic (pre-recorded) voice-overs. It fetches
-    .ogg soundbytes by constructing a semi-random url, based on the current time of the day.
+''' 
+This program ensures Nuntius is able to greet its users with relevant and dynamic (pre-recorded) voice-overs. It fetches
+.ogg soundbytes by constructing a semi-random url, based on the current time of the day.
 
-    By Arthur Geel, 30-05-2018                                                                                              '''
+By Arthur Geel, 30-05-2018                                                                                              
+'''
 
 from datetime import datetime
 import random
