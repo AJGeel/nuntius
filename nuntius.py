@@ -104,7 +104,7 @@ while True:
             index = allNewsItems - 1
         sleep(0.5)
 
-    # 
+    # Restarts playlist if at the very end of the queue.
     else:
         fi = player.poll()
         if (fi == 0 and st == 0):
