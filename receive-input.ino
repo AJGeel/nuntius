@@ -6,7 +6,7 @@
    Adapted by Arthur Geel, 02-06-2018
 */
 
-const int ledPin = 13; # built-in LED on Arduino board
+const int ledPin = 13; // built-in LED on Arduino board
 int piInput
 
 void setup() {
