@@ -7,7 +7,7 @@
 */
 
 const int ledPin = 13; // built-in LED on Arduino board
-int piInput
+int piInput;
 
 void setup() {
   pinMode(ledPin, OUTPUT);
