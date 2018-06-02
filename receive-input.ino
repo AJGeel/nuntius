@@ -17,7 +17,7 @@ void setup() {
 
 void loop(){;
   if(Serial.available()){
-    # listens to serial monitor for input sent by raspberry pi
+    // listens to serial monitor for input sent by Raspberry Pi
     piInput = Serial.read() - '0';
   }
   digitalWrite(ledPin, HIGH);
