@@ -155,6 +155,15 @@ void colorWipe(){
   }
 }
 
+void colorWipe_2(){
+  strip.setPixelColor(currentPixel, strip.Color(50,0,0));
+  strip.show();
+  currentPixel++;
+  if(currentPixel == NUM_PIXELS) {
+    currentPixel = 0;
+  }
+}
+
 void pixelOff(){
   strip.setPixelColor(currentPixel, strip.Color(0,0,0));
   strip.show();
@@ -187,10 +196,16 @@ void loop() {
       npMillis = millis();
       colorWipe();
      }
+     
   }
   
   else if (piInput == 3) {
-    fastFade(currentMillis); 
+    fastFade(currentMillis);
+    
+    if ((unsigned long)(millis() - npMillis) >= fadeInterval) {
+      npMillis = millis();
+      colorWipe_2();
+     }
     // Fast pulsing button. Prominent ring animations.
   }
   
