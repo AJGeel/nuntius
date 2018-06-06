@@ -19,6 +19,7 @@ sleep(20)
 # Load news items from the directory, loads current time
 os.chdir('news')
 newsItems = glob.glob('*.ogg')
+newsItems.sort()
 cHour = datetime.now().time().hour
 
 # Plays correct start-up theme, addresses time of day
