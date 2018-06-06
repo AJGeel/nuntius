@@ -134,6 +134,37 @@ void fastFade(unsigned long thisMillis) {
   }
 }
 
+void fadePlayButton(unsigned long thisMillis) {
+  // is it time to update yet?
+  // if not, nothing happens
+  if (thisMillis - previousFadeMillis >= fastFadeInterval) {
+    // yup, it's time!
+    if (fadeDirection == UP) {
+      fadeValue = fadeValue + fadeIncrement;  
+      if (fadeValue >= maxPWM) {
+        // At max, limit and change direction
+        fadeValue = maxPWM;
+        fadeDirection = DOWN;
+      }
+    } else {
+      //if we aren't going up, we're going down
+      fadeValue = fadeValue - fadeIncrement;
+      if (fadeValue <= minPWM) {
+        // At min, limit and change direction
+        fadeValue = minPWM;
+        fadeDirection = UP;
+      }
+    }
+    // Only need to update when it changes
+    analogWrite(LED_BUTTON_1, fadeValue);
+    analogWrite(LED_BUTTON_2, 0); 
+    analogWrite(LED_BUTTON_3, 0);   
+ 
+    // reset millis for the next iteration (fade timer only)
+    previousFadeMillis = thisMillis;
+  }
+}
+
 void buttonsOn(){
   analogWrite(LED_BUTTON_1, 255);
   analogWrite(LED_BUTTON_2, 255); 
@@ -157,6 +188,15 @@ void colorWipe(){
 
 void colorWipe_2(){
   strip.setPixelColor(currentPixel, strip.Color(50,0,0));
+  strip.show();
+  currentPixel++;
+  if(currentPixel == NUM_PIXELS) {
+    currentPixel = 0;
+  }
+}
+
+void colorWipe_3(){
+  strip.setPixelColor(currentPixel, strip.Color(50,50,80));
   strip.show();
   currentPixel++;
   if(currentPixel == NUM_PIXELS) {
@@ -210,7 +250,23 @@ void loop() {
   }
   
   else if (piInput == 4) {
-    fastFade(currentMillis);
+    regularFade(currentMillis);
+    
+    if ((unsigned long)(millis() - npMillis) >= fadeInterval) {
+      npMillis = millis();
+      colorWipe();
+     }
+    // buttons gently pulse, LED ring should indicate current time and overall time.
+  }
+  
+  else if (piInput == 5) {
+    fadePlayButton(currentMillis);
+    
+    if ((unsigned long)(millis() - npMillis) >= fadeInterval) {
+      npMillis = millis();
+      pixelOff();
+     }
+    
     // buttons gently pulse, LED ring should indicate current time and overall time.
   }
   
