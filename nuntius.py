@@ -94,7 +94,7 @@ while True:
         print("ITEM ADDED TO FAVOURITES")
         sleep(0.5)
 
-    # Plays previous item in queue.
+    # Goes back 30 seconds in time.
     elif (GPIO.input(23)==False):
         print("23 HAS BEEN PRESSED // BACK 30 SECONDS")
         if st == 0:
@@ -104,6 +104,14 @@ while True:
         # if index < 0:
             #index = allNewsItems - 1
         sleep(0.5)
+    
+    '''elif (GPIO.input(UNDECIDED)==False):
+        # todo add some other features
+        print("Token Button 02 Pressed: Index back to 0")
+        if st == 0:
+            player.stdin.write("left arrow")      # pin 22 Next Audio
+        index = 0
+        sleep(0.5) '''
 
     # Restarts playlist if at the very end of the queue.
     else:
