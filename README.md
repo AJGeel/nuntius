@@ -8,6 +8,6 @@ Reaching younger audiences with modern news media is a challenge that has proven
 ## Details
 **Timeframe:** Feb. '18 — July '18
 
-**Type:** Final Bachelor Project (20 ECTS)
+**Type:** Final Bachelor Project (25 ECTS)
 
 **Grade:** 8.0
